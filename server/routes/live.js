@@ -5,19 +5,17 @@ const router = Router()
 
 router.get('/:serviceUid/:date', async (req, res) => {
   const { serviceUid, date } = req.params
-  const username = process.env.REALTIME_TRAINS_USERNAME
-  const password = process.env.REALTIME_TRAINS_PASSWORD
+  const apiKey = process.env.REALTIME_TRAINS_API_KEY
 
-  if (!username || !password) {
-    return res.status(503).json({ error: 'Realtime Trains credentials not configured' })
+  if (!apiKey) {
+    return res.status(503).json({ error: 'Realtime Trains API key not configured' })
   }
 
   const url = `https://api.rtt.io/api/v1/json/service/${serviceUid}/${date.replace(/-/g, '/')}`
-  const auth = Buffer.from(`${username}:${password}`).toString('base64')
 
   try {
     const apiRes = await fetch(url, {
-      headers: { Authorization: `Basic ${auth}` },
+      headers: { Authorization: `Bearer ${apiKey}` },
     })
 
     if (!apiRes.ok) {
