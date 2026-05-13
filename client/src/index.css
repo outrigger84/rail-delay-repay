@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-bg text-white font-mono;
+    -webkit-font-smoothing: antialiased;
+  }
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-s1 border border-b1 rounded-lg p-4;
+  }
+  .card-elevated {
+    @apply bg-s2 border border-b2 rounded-lg p-4;
+  }
+  .btn-primary {
+    @apply bg-amber text-bg font-mono font-semibold text-sm px-4 py-2 rounded hover:opacity-90 transition-opacity;
+  }
+  .btn-ghost {
+    @apply border border-b2 text-dim font-mono text-sm px-4 py-2 rounded hover:border-amber hover:text-white transition-colors;
+  }
+  .input {
+    @apply bg-s3 border border-b2 rounded px-3 py-2 text-white font-mono text-sm w-full focus:outline-none focus:border-amber;
+  }
+  .delay-badge {
+    @apply font-mono text-xs font-semibold px-2 py-0.5 rounded;
+  }
+  .status-on-time {
+    @apply text-green;
+  }
+  .status-minor {
+    @apply text-amber;
+  }
+  .status-delayed {
+    @apply text-red;
+  }
+  .status-eligible {
+    @apply text-amber animate-pulse;
+  }
+}
